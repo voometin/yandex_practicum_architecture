@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../../host/node_modules/react';
 import SuccessIcon from '../images/success-icon.svg';
 import ErrorIcon from '../images/error-icon.svg';
 

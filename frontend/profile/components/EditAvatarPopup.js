@@ -1,5 +1,5 @@
-import React from 'react';
-import PopupWithForm from './PopupWithForm';
+import React from '../../host/node_modules/react';
+import PopupWithForm from '../../common/components/PopupWithForm';
 
 function EditAvatarPopup({ isOpen, onUpdateAvatar, onClose }) {
   const inputRef = React.useRef();

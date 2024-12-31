@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../../host/node_modules/react';
 
 function ImagePopup({ card, onClose }) {
   return (
