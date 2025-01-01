@@ -1,6 +1,10 @@
-import React from '../../host/node_modules/react';
-import PopupWithForm from '../../common/components/PopupWithForm';
-import { CurrentUserContext } from '../../../host/src/contexts/CurrentUserContext';
+import React, { lazy } from 'react';
+// import PopupWithForm from '../../common/components/PopupWithForm';
+
+const PopupWithForm = lazy(() => import('common/PopupWithForm').catch(() => {
+  return { default: () => <div className='error'>PopupWithForm component is not available!</div> };
+ })
+);  // TODO delete after adding to Node package registry
 
 function EditProfilePopup({ isOpen, onUpdateUser, onClose }) {
   const [name, setName] = React.useState('');

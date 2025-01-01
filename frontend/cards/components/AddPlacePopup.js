@@ -1,5 +1,11 @@
-import React from 'react';
-import PopupWithForm from './PopupWithForm';
+import React, { lazy } from 'react';
+// import PopupWithForm from './PopupWithForm';
+
+
+const PopupWithForm = lazy(() => import('common/PopupWithForm').catch(() => {
+  return { default: () => <div className='error'>PopupWithForm component is not available!</div> };
+ })
+);  // TODO delete after adding to Node package registry
 
 function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
   const [name, setName] = React.useState('');

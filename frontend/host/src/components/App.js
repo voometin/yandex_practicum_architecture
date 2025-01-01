@@ -1,20 +1,49 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
 import Header from "./Header";
-import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
-import ImagePopup from "./ImagePopup";
+import CurrentUserContext from "../context/CurrentUserContext"
 import api from "../utils/api";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import Register from "./Register";
-import Login from "./Login";
-import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
 import * as auth from "../utils/auth.js";
+
+
+const CardList = lazy(() => import('cards/CardList').catch(() => {
+  return { default: () => <div className='error'>CardList component is not available!</div> };
+ })
+);
+const ImagePopup = lazy(() => import('cards/ImagePopup').catch(() => {
+  return { default: () => <div className='error'>ImagePopup component is not available!</div> };
+ })
+);
+const AddPlacePopup = lazy(() => import('cards/AddPlacePopup').catch(() => {
+  return { default: () => <div className='error'>AddPlacePopup component is not available!</div> };
+ })
+);
+const PopupWithForm = lazy(() => import('common/PopupWithForm').catch(() => {
+  return { default: () => <div className='error'>PopupWithForm component is not available!</div> };
+ })
+);
+const EditProfilePopup = lazy(() => import('profile/EditProfilePopup').catch(() => {
+  return { default: () => <div className='error'>EditProfilePopup component is not available!</div> };
+ })
+);
+const EditAvatarPopup = lazy(() => import('profile/EditAvatarPopup').catch(() => {
+  return { default: () => <div className='error'>EditAvatarPopup component is not available!</div> };
+ })
+);
+const Register = lazy(() => import('signup/Register').catch(() => {
+  return { default: () => <div className='error'>Register component is not available!</div> };
+ })
+);
+const InfoTooltip = lazy(() => import('signup/InfoTooltip').catch(() => {
+  return { default: () => <div className='error'>InfoTooltip component is not available!</div> };
+ })
+);
+const Login = lazy(() => import('login/Login').catch(() => {
+  return { default: () => <div className='error'>Login component is not available!</div> };
+ })
+);
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -186,7 +215,7 @@ function App() {
           <ProtectedRoute
             exact
             path="/"
-            component={Main}
+            component={CardList}
             cards={cards}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
